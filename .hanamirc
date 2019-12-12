@@ -1,0 +1,3 @@
+project=cadis
+test=rspec
+template=erb
