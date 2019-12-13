@@ -1,0 +1,68 @@
+Concepts:
+  ☐ Age
+  ☐ Coverage
+  ☐ Standard
+  ☐ Usage
+  ☐ Dependencies
+  ☐ Incident
+
+  Cadis
+
+
+
+
+Database:
+  ☐ Project
+    ☐ has_one Repository
+    ☐ has_many FileResources through Repository
+    ☐ has_many Users
+    ☐ name
+  ☐ User
+    ☐ belongs_to Project
+    ☐ email
+    ☐ password
+  ☐ Permission
+    ☐ name
+    ☐ actor_id
+    ☐ actor_type
+  ☐ Repository
+    ☐ has_many FileResources
+    ☐ belongs_to Project
+  ☐ FileResource
+    ☐ Has many lines
+    ☐ latest commit timestamp
+    ☐ latest commit author
+    ☐ oldest commit timestamp
+    ☐ covered_percentage
+  ☐ Line
+    ☐ belongs_to File
+    ☐ code
+    ☐ most_recent_author_email
+    ☐ line_number
+    ☐ sha
+    ☐ most_recent_commit_timestamp
+    ☐ covered
+
+Age:
+  ☐ Find all tracked files
+  ☐ Run git blame -e -t on each of the files
+  ☐ Convert blame into line-by-line array
+  ☐ Split each line based on Regex to determine specific metadata
+    ☐ sha
+    ☐ author_email
+    ☐ timestamp
+    ☐ code
+    ☐ line_number
+  ☐ Build data structure to contain array of files that contain line-by-line metadata
+  ☐ Import data structure into database in one command
+
+
+Coverage:
+  ☐ Run full rspec suite with SimpleCov-json or other formatter
+  ☐ Collect .resultset.json
+  ☐ Iterate through resultset building array of:
+    ☐ filename
+    ☐ line_number
+    ☐ covered
+    ☐ covered_percentage_file
+  ☐ Import data structure into database for existing File and Line records

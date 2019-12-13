@@ -1,0 +1,25 @@
+Learning Hanami:
+
+Setup Postgres:
+  ☐ bundle exec hanami new proj --database postgresql
+  ☐ Change DATABASE_URL credentials to match instance
+  ☐ https://guides.hanamirb.org/models/database-configuration/
+
+Bulk Commands:
+  https://guides.hanamirb.org/repositories/overview/#custom-commands
+
+Add New domain:
+  ☐ hanami generate app admin
+  ☐ Reload server for routes
+
+Don't validate entities (models):
+  Hanami instead radically suggested that you should only validate controllers and other PORO type objects
+  Entity validation is expensive and the last line of defence before the database takes over
+  https://guides.hanamirb.org/actions/parameters/#validations-coercion
+
+  Nested validation resources must use .schema:
+    params do
+      required(:repository).schema do
+        required(:source).filled(:str?)
+      end
+    end

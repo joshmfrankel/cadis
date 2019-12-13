@@ -6,4 +6,4 @@
 
 root to: 'home#index'
 
-resources :files
+resources :resources
