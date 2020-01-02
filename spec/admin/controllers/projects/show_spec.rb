@@ -1,4 +1,4 @@
-RSpec.describe Admin::Controllers::Repositories::Show, type: :action do
+RSpec.describe Admin::Controllers::Projects::Show, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[] }
 

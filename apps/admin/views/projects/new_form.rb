@@ -1,11 +1,9 @@
 module Admin
   module Views
-    module Repositories
-      class New
-        include Admin::View
-
+    module Projects
+      module NewForm
         def form
-          form_for :repository, routes.repositories_path do
+          form_for :project, routes.projects_path do
             div class: 'input' do
               label :source
               text_field :source

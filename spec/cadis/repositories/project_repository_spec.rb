@@ -1,6 +1,6 @@
-RSpec.describe RepositoryRepository, type: :repository do
+RSpec.describe ProjectRepository, type: :repository do
   it 'raises Not Null constraint error without source' do
-    repo = RepositoryRepository.new
+    repo = ProjectRepository.new
 
     expect do
       repo.create(invalid: 'hi')

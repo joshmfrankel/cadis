@@ -4,4 +4,5 @@
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
 
-resources :repositories
+root to: 'home#index'
+resources :projects

@@ -1,6 +1,6 @@
 Hanami::Model.migration do
   change do
-    create_table :repositories do
+    create_table :projects do
       primary_key :id
 
       column :source, String, null: false

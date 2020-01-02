@@ -1,6 +1,6 @@
 module Admin
   module Views
-    module Repositories
+    module Projects
       class Show
         include Admin::View
       end
