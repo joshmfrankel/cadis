@@ -5,6 +5,7 @@ gem 'hanami',       '~> 1.3'
 gem 'hanami-model', '~> 1.3'
 
 gem 'pg'
+gem 'i18n'
 
 group :development do
   # Code reloading
@@ -24,5 +25,4 @@ group :test do
 end
 
 group :production do
-  # gem 'puma'
 end
