@@ -22,6 +22,13 @@ RSpec.describe Admin::Controllers::Accounts::Create, type: :action do
     expect(flash[:message]).to eq('Check your email to verify you\'re new account')
   end
 
+  it 'redirects to admin dashboard' do
+    response = action.call(params)
+
+    expect(response[0]).to eq(302)
+    expect(response[1]['Location']).to eq('/admin')
+  end
+
   context 'for invalid parameters' do
     it 'responds with 422 when Account Name is empty' do
       params = Hash[account: { name: nil }]

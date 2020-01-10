@@ -14,6 +14,7 @@ module Admin
           if params.valid?
             AccountRepository.new.create(params[:account])
             flash[:message] = 'Check your email to verify you\'re new account'
+            redirect_to Admin.routes.root_path
           else
             self.status = 422
           end
