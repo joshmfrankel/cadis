@@ -1,0 +1,11 @@
+<h1>Create a new Account</h1>
+<%=
+  form_for :account, Admin.routes.accounts_path do
+    div class: 'input' do
+      label :name
+      text_field :name
+    end
+
+    submit 'Submit'
+  end
+%>

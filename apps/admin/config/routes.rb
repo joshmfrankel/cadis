@@ -6,3 +6,4 @@
 
 root to: 'home#index'
 resources :projects
+resources :accounts
