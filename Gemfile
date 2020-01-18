@@ -12,10 +12,11 @@ group :development do
   # See: https://guides.hanamirb.org/projects/code-reloading
   gem 'shotgun', platforms: :ruby
   gem 'hanami-webconsole'
-  gem 'pry'
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test, :development do
+  gem 'pry', '~> 0.12'
   gem 'dotenv', '~> 2.4'
 end
 

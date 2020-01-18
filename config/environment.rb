@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
+require 'letter_opener'
 require_relative '../lib/cadis'
 require_relative '../apps/web/application'
 require_relative '../apps/admin/application'
@@ -41,6 +42,10 @@ Hanami.configure do
   environment :development do
     # See: https://guides.hanamirb.org/projects/logging
     logger level: :debug
+
+    mailer do
+      delivery LetterOpener::DeliveryMethod, location: File.expand_path('../tmp/letter_opener', __FILE__)
+    end
   end
 
   environment :production do

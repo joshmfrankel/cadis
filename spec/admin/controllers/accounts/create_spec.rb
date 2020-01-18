@@ -1,6 +1,7 @@
 RSpec.describe Admin::Controllers::Accounts::Create, type: :action do
   let(:action) { described_class.new }
-  let(:params) { Hash[account: { name: 'My First Account' }] }
+  let(:email) { 'test@test.com' }
+  let(:params) { Hash[account: { name: 'My First Account', user: { email: email } }] }
   let(:repo) { AccountRepository.new }
 
   before do
@@ -19,7 +20,7 @@ RSpec.describe Admin::Controllers::Accounts::Create, type: :action do
 
     flash = action.exposures[:flash]
 
-    expect(flash[:message]).to eq('Check your email to verify you\'re new account')
+    expect(flash[:message]).to eq('Check your email to verify your new account')
   end
 
   it 'redirects to admin dashboard' do
@@ -27,6 +28,12 @@ RSpec.describe Admin::Controllers::Accounts::Create, type: :action do
 
     expect(response[0]).to eq(302)
     expect(response[1]['Location']).to eq('/admin')
+  end
+
+  it 'sends an email to verify the new account email' do
+    expect(Mailers::AccountCreated).to receive(:deliver).with(email: email)
+
+    action.call(params)
   end
 
   context 'for invalid parameters' do
@@ -39,6 +46,13 @@ RSpec.describe Admin::Controllers::Accounts::Create, type: :action do
 
     it 'responds with 422 when Account Name is not a string' do
       params = Hash[account: { name: 1234 }]
+      response = action.call(params)
+
+      expect(response[0]).to eq(422)
+    end
+
+    it 'responds with 422 when User email is empty' do
+      params = Hash[account: { user: { email: nil }}]
       response = action.call(params)
 
       expect(response[0]).to eq(422)

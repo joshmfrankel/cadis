@@ -6,11 +6,12 @@ RSpec.describe 'Create new Account' do
 
     within '#account-form' do
       fill_in 'Account Name', with: 'My First Account'
+      fill_in 'Email', with: 'test@test.com'
 
       click_button 'Submit'
     end
 
-    expect(page).to have_content('Check your email to verify you\'re new account')
+    expect(page).to have_content('Check your email to verify your new account')
   end
 
   it 'should display error messages' do
