@@ -7,6 +7,9 @@ gem 'hanami-model', '~> 1.3'
 gem 'pg'
 gem 'i18n'
 
+gem 'warden'
+gem 'bcrypt'
+
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading

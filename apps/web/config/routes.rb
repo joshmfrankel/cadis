@@ -8,3 +8,5 @@ root to: 'home#index'
 
 resources :resources
 resources :accounts
+
+get '/login', to: 'sessions#new', as: :login

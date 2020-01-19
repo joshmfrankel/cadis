@@ -6,5 +6,6 @@ RSpec.describe 'Visit home page' do
 
     expect(page).to have_content('Welcome to Cadis')
     expect(page).to have_link('Home', href: Web.routes.root_path)
+    expect(page).to have_link('Login', href: Web.routes.path(:login))
   end
 end
