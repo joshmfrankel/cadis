@@ -4,12 +4,10 @@ require 'hanami/model'
 require 'letter_opener'
 require_relative '../lib/cadis'
 require_relative '../apps/web/application'
-require_relative '../apps/admin/application'
 
 require_relative './initializers/i18n'
 
 Hanami.configure do
-  mount Admin::Application, at: '/admin'
   mount Web::Application, at: '/'
 
   model do

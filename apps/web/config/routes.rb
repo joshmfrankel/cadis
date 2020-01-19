@@ -7,3 +7,4 @@
 root to: 'home#index'
 
 resources :resources
+resources :accounts
