@@ -8,5 +8,7 @@ root to: 'home#index'
 
 resources :resources
 resources :accounts
+resources :users, only: [:create]
 
+get '/register', to: 'users#new', as: :register
 get '/login', to: 'sessions#new', as: :login

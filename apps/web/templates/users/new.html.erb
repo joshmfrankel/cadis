@@ -1,0 +1,15 @@
+<h1>Register</h1>
+
+<%=
+  form_for :user, routes.users_path do
+    div class: 'input' do
+      label 'Email', for: :email
+      text_field :email
+
+      label 'Password', for: :password
+      text_field :password
+    end
+
+    submit 'Register'
+  end
+%>
