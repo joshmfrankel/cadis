@@ -1,0 +1,15 @@
+<h1>Login</h1>
+
+<%=
+  form_for :session, routes.sessions_path do
+    div class: 'input' do
+      label 'Email', for: :email
+      text_field :email
+
+      label 'Password', for: :password
+      text_field :password
+    end
+
+    submit 'Login'
+  end
+%>

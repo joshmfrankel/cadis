@@ -25,7 +25,11 @@ RSpec.describe Web::Controllers::Users::Create, type: :action do
   pending 'does not register user if email exists'
 
   it 'sends an email to verify the user email supplied' do
-    expect(Mailers::UserRegistered).to receive(:deliver).with(email: email, confirmation_token: String)
+    expect(Mailers::UserRegistered).to receive(:deliver).with(
+      email: email,
+      confirmation_token: String,
+      registered_user_id: Integer
+    )
 
     action.call(params)
   end

@@ -6,6 +6,10 @@ module Web
 
         def call(params)
         end
+
+        private
+
+        def authenticate!; end
       end
     end
   end

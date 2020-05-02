@@ -1,10 +1,12 @@
 require 'features_helper'
 
 RSpec.describe 'Register a new user' do
-  it 'displays the registration form' do
-    visit Web.routes.root_path
+  before do
+    UserRepository.new.clear
+  end
 
-    click_link 'Register'
+  it 'displays the registration form' do
+    visit Web.routes.register_path
 
     within '#user-form' do
       fill_in 'Email', with: 'test@test.com'
@@ -13,6 +15,8 @@ RSpec.describe 'Register a new user' do
 
     click_button 'Register'
 
-    expect(page).to have_content('Check your email to confirm your email address')
+    expect(page).to have_content(
+      'Check your email to confirm your email address'
+    )
   end
 end

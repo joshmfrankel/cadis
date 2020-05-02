@@ -10,4 +10,8 @@ class UserRepository < Hanami::Repository
   def find_by_email(email)
     users.where(email: email).one
   end
+
+  def find_by_id_and_confirmation_token(id:, confirmation_token:)
+    users.where(id: id, confirmation_token: confirmation_token).one
+  end
 end

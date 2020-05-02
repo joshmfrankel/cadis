@@ -13,8 +13,12 @@ module Web
           )
           user_params.delete(:password)
 
-          UserRepository.new.create(user_params)
-          Mailers::UserRegistered.deliver(email: user_params[:email], confirmation_token: user_params[:confirmation_token])
+          created_user = UserRepository.new.create(user_params)
+          Mailers::UserRegistered.deliver(
+            email: user_params[:email],
+            confirmation_token: user_params[:confirmation_token],
+            registered_user_id: created_user.id
+          )
         end
 
         private
@@ -22,6 +26,8 @@ module Web
         def encrypted_password
           BCrypt::Password.create(params[:user][:password], cost: 12)
         end
+
+        def authenticate!; end
       end
     end
   end

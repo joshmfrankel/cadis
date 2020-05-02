@@ -1,5 +1,2 @@
 <h1>Thanks for registering</h1>
-
-<p>Please click the link below to verify your email address</p>
-
-<%= confirmation_token %>
+<a href="<%= Web.routes.verify_user_url(id: registered_user_id, confirmation_token: confirmation_token) %>">Click here to verify your email address</a>

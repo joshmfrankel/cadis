@@ -8,7 +8,12 @@ root to: 'home#index'
 
 resources :resources
 resources :accounts
-resources :users, only: [:create]
+resources :users, only: [:create] do
+  member do
+    get 'verify'
+  end
+end
+resources :sessions, only: [:create]
 
 get '/register', to: 'users#new', as: :register
 get '/login', to: 'sessions#new', as: :login
